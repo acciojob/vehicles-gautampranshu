@@ -6,7 +6,7 @@ public class Car extends Vehicle {
     private int doors;
     private int gears;
     private boolean isManual;
-    protected int currentGear;
+    private int currentGear;
     private int seats;
 
     public Car()
@@ -21,7 +21,7 @@ public class Car extends Vehicle {
         this.isManual = isManual;
         this.type = type;
         this.seats = seats;
-        currentGear = 1;
+        setCurrentGear(1);
         //Hint: Car extends Vehicle
     }
 
