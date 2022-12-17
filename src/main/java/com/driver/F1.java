@@ -12,7 +12,7 @@ public class F1 extends Car {
 
     public void accelerate(int rate){
         int newSpeed = 0;
-        newSpeed = currentSpeed + rate; //set the value of new speed by using currentSpeed and rate
+        newSpeed = getCurrentSpeed() + rate; //set the value of new speed by using currentSpeed and rate
         /**
          * speed 0: gear 1
          * speed 1-50: gear 1
@@ -25,22 +25,28 @@ public class F1 extends Car {
 
         if(newSpeed == 0) {
             stop();
-            currentGear = 1;//Stop the car, set gear as 1
+           setCurrentGear(1);//Stop the car, set gear as 1
         }
         //for all other cases, change the gear accordingly
 
         if(newSpeed > 0) {
-            changeSpeed(newSpeed, getCurrentDirection(newSpeed));
+            if(newSpeed <= 50) setCurrentGear(1);
+            else if(newSpeed <= 100 && newSpeed> 50) setCurrentGear(2);
+            else if(newSpeed <= 150 && newSpeed > 100) setCurrentGear(3);
+            else if(newSpeed <= 200 && newSpeed > 150) setCurrentGear(4);
+            else if(newSpeed <= 250 && newSpeed > 200) setCurrentGear(5);
+            else setCurrentGear(6);
+            changeSpeed(newSpeed, getCurrentDirection());
         }
     }
-    public int getCurrentDirection(int speed)
-    {
-        if(speed <= 50) currentGear = 1;
-        else if(speed <= 100 && speed > 50) currentGear = 2;
-        else if(speed <= 150 && speed > 100) currentGear = 3;
-        else if(speed <= 200 && speed > 150) currentGear = 4;
-        else if(speed <= 250 && speed > 200) currentGear = 5;
-        else currentGear = 6;
-        return currentDirection;
-    }
+//    public int getCurrentDirection(int speed)
+//    {
+//        if(speed <= 50) setCurrentGear(1);
+//        else if(speed <= 100 && speed > 50) setCurrentGear(2);
+//        else if(speed <= 150 && speed > 100) setCurrentGear(3);
+//        else if(speed <= 200 && speed > 150) setCurrentGear(4);
+//        else if(speed <= 250 && speed > 200) setCurrentGear(5);
+//        else setCurrentGear(6);
+//        return currentDirection;
+//    }
 }
