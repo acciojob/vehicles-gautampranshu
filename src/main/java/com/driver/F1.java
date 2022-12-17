@@ -35,7 +35,8 @@ public class F1 extends Car {
     }
     public int getCurrentDirection(int speed)
     {
-        if(speed <= 100 && speed > 50) currentGear = 2;
+        if(speed <= 50) currentGear = 1;
+        else if(speed <= 100 && speed > 50) currentGear = 2;
         else if(speed <= 150 && speed > 100) currentGear = 3;
         else if(speed <= 200 && speed > 150) currentGear = 4;
         else if(speed <= 250 && speed > 200) currentGear = 5;

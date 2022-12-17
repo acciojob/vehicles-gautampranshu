@@ -12,6 +12,8 @@ public class Vehicle {
     }
     public Vehicle(String name) {
     this.name  = name;
+    currentSpeed = 0;
+    currentDirection = 0;
     }
 
     public String getName() {
